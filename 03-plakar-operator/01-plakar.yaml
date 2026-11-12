@@ -1,0 +1,13 @@
+---
+apiVersion: "task.plakar.io/v1alpha1"
+kind: "Plakar"
+metadata:
+  name: "pcp"
+spec:
+  plakarControlPlaneUrl: "${PLAKAR_KUBERNETES_OPERATOR_PCP_URL}"
+  # If you already have an existing inventory, you can supply its UUID to use
+  # it instead of having this operator create one.
+  #inventoryUUID: "${PLAKAR_KUBERNETES_OPERATOR_INVENTORY_UUID}"
+  apiKey:
+    secretName: "plakar-credentials"
+    key: "apikey"

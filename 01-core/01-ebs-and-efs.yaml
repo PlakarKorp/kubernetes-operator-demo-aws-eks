@@ -1,0 +1,37 @@
+---
+# -----------------------------------------------------------------------------
+# Provides ReadWriteOnce storage for WordPress replicas.
+# -----------------------------------------------------------------------------
+
+apiVersion: "storage.k8s.io/v1"
+kind: "StorageClass"
+metadata:
+  name: "gp3"
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: "ebs.csi.aws.com"
+parameters:
+  type: "gp3"
+reclaimPolicy: "Delete"
+volumeBindingMode: "WaitForFirstConsumer"
+allowVolumeExpansion: true
+
+---
+# -----------------------------------------------------------------------------
+# Provides shared ReadWriteMany storage for WordPress replicas.
+# -----------------------------------------------------------------------------
+
+apiVersion: "storage.k8s.io/v1"
+kind: "StorageClass"
+metadata:
+  name: "efs-csi"
+
+provisioner: "efs.csi.aws.com"
+
+parameters:
+  provisioningMode: "efs-ap"
+  fileSystemId: "${EFS_FILE_SYSTEM_ID}"
+  directoryPerms: "700"
+
+reclaimPolicy: "Delete"
+volumeBindingMode: "Immediate"

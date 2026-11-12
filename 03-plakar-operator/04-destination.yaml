@@ -1,0 +1,33 @@
+---
+apiVersion: "connector.plakar.io/v1alpha1"
+kind: "Destination"
+metadata:
+  name: "wordpress-restore"
+spec:
+  endpoint: "/apps/wordpress-pvc"
+  protocol: "k8s+pvc"
+  integration:
+    name: "k8s"
+  fields:
+    kubeconfig:
+      valueFrom:
+        secretKeyRef:
+          name: "${CLUSTER_NAME}-cluster"
+          key: "kubeConfig"
+
+---
+apiVersion: "connector.plakar.io/v1alpha1"
+kind: "Destination"
+metadata:
+  name: "mariadb-restore"
+spec:
+  endpoint: "/apps/mariadb-pvc"
+  protocol: "k8s+pvc"
+  integration:
+    name: "k8s"
+  fields:
+    kubeconfig:
+      valueFrom:
+        secretKeyRef:
+          name: "${CLUSTER_NAME}-cluster"
+          key: "kubeConfig"

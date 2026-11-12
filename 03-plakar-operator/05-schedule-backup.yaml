@@ -1,0 +1,25 @@
+---
+apiVersion: "task.plakar.io/v1alpha1"
+kind: "ScheduleBackup"
+metadata:
+  name: "mariadb-schedule-backup"
+spec:
+  periodicity: 86400
+  historyLimit: 7
+  source:
+    name: "mariadb-pvc"
+  store:
+    name: "aws-s3"
+
+---
+apiVersion: "task.plakar.io/v1alpha1"
+kind: "ScheduleBackup"
+metadata:
+  name: "wordpress-schedule-backup"
+spec:
+  periodicity: 86400
+  historyLimit: 7
+  source:
+    name: "wordpress-pvc"
+  store:
+    name: "aws-s3"

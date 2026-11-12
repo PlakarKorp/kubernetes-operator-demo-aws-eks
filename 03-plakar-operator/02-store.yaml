@@ -1,0 +1,32 @@
+---
+apiVersion: "connector.plakar.io/v1alpha1"
+kind: "Store"
+metadata:
+  name: "aws-s3"
+spec:
+  endpoint: "${AWS_S3_BUCKET_NAME}.s3.${AWS_DEFAULT_REGION}.amazonaws.com"
+  protocol: "s3"
+  integration:
+    name: "s3"
+  fields:
+    endpoint:
+      value: "https://s3.${AWS_DEFAULT_REGION}.amazonaws.com"
+    virtual_host:
+      value: "true"
+    region:
+      value: "${AWS_DEFAULT_REGION}"
+    passphrase:
+      valueFrom:
+        secretKeyRef:
+          name: "kloset"
+          key: "passphrase"
+    access_key:
+      valueFrom:
+        secretKeyRef:
+          name: "aws-credentials"
+          key: "accessKey"
+    secret_access_key:
+      valueFrom:
+        secretKeyRef:
+          name: "aws-credentials"
+          key: secretAccessKey

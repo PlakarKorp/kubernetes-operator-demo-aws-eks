@@ -1,0 +1,30 @@
+---
+apiVersion: "task.plakar.io/v1alpha1"
+kind: "Restore"
+metadata:
+  name: "wordpress-restore"
+spec:
+  store:
+    name: "aws-s3"
+  destination:
+    name: "wordpress-restore"
+  filters:
+    dataset: "${PLAKAR_SOURCE_ID_WORDPRESS}"
+    latest: true
+  # To restore a specific snapshot instead, replace dataset/latest with:
+  #snapshotID: "465ce8ccfd26b615acbc5acb773e990396800be139d13b016ad15da3b3241243"
+
+---
+apiVersion: "task.plakar.io/v1alpha1"
+kind: "Restore"
+metadata:
+  name: "mariadb-restore"
+spec:
+  store:
+    name: "aws-s3"
+  destination:
+    name: "mariadb-restore"
+  filters:
+    dataset: "${PLAKAR_SOURCE_ID_MARIADB}"
+    latest: true
+  #snapshotID: "3994e33adad6c9951e8228f536989d7124d982f090bfde17fb9da559e8388ba2"
