@@ -18,8 +18,8 @@
 ### Cloning this repo
 
 ```sh
-git clone https://github.com/PlakarKorp/plakar-kubernetes-operator-demo-aws-eks.git
-cd plakar-kubernetes-operator-demo-aws-eks
+git clone https://github.com/PlakarKorp/kubernetes-operator-demo-aws-eks.git
+cd kubernetes-operator-demo-aws-eks
 ```
 
 ### Important files
