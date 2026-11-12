@@ -18,8 +18,8 @@
 ### Cloning this repo
 
 ```sh
-git clone https://github.com/PlakarKorp/k8s-demo-with-pcp.git
-cd k8s-demo-with-pcp
+git clone https://github.com/PlakarKorp/plakar-kubernetes-operator-demo-aws-eks.git
+cd plakar-kubernetes-operator-demo-aws-eks
 ```
 
 ### Important files
